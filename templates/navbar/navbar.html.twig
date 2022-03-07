@@ -1,0 +1,30 @@
+<body data-spy="scroll" data-target="#navbarSupportedContent">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="logo navbar-brand">Logo{#<img src="{{ asset('build/images/logo.png') }}" />#}</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">cos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#discovery">cos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#service">cos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sign">cos</a>
+                </li>
+            </ul>
+            <input class="form-control w-25 " name="_username" type="text" placeholder="E-mail">
+            <input class="form-control w-25" name="_password" type="password" placeholder="Hasło">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn  text-light " type="submit">Zaloguj</button>
+        </div>
+    </nav>
+</body>

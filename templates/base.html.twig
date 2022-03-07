@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
+    <title>{% block title %}MAGAZYNY{% endblock %}</title>
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+
+<body class="app">
+    <div class="allside">
+        {% if app.user %}
+        {% include '_include/sidebar.html.twig' %}
+        {% endif %}
+        <div class="{% if app.user %}page-container home_content{% endif %}">
+            <div class="header  {% if not app.user %} full-width{% endif %}">
+                <div class="header-container">
+                    <ul class="nav-left">
+                        {% if app.user %}
+
+                        <li>
+                            <a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i
+                                    class="ti-menu"></i></a>
+                        </li>
+                        {% else %}
+                        <img src="{{ asset('build/images/logo.png') }}" />
+                        {% endif %}
+                    </ul>
+                    <ul class="nav-right">
+
+                        {% if app.user %}
+
+
+                        {% else %}
+                        <li style="padding: 15px;">
+                            <form class="form-inline" action="#" method="post">
+                                {% if error is defined and error %}
+                                <div class="alert alert-danger">
+                                    {{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+                                {% include 'navbar/navbar.html.twig' %}
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                <main>
+
+                    <div id="mainContent">
+
+                        {% block main %}
+                        {% endblock %}
+                    </div>
+
+                </main>
+
+            </div>
+        </div>
+    </div>
+    {% if app.user %}
+    {% else %}
+    {#{% include 'footer/footer.html.twig' %} #}
+    {% endif %}
+    </div>
+</body>
+{% block javascripts %}
+{{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</html>
